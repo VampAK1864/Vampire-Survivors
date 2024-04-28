@@ -10,6 +10,9 @@ public class EnemyController : MonoBehaviour
     public float damage; // The damage that the enemy deals.
     public float hitWaitTime = 1f; // The time to wait before the enemy can hit the player again.
     private float hitCounter; // The counter for the hit wait time.
+    public float health =5f; // The health of the enemy.
+    public float knockBackTime = .5f; // The time to knock back the enemy.
+    private float knockBackCounter; // The counter for the knock back time.
 
     void Start()
     {
@@ -19,6 +22,21 @@ public class EnemyController : MonoBehaviour
 
     void Update()
     {
+        if(knockBackCounter > 0) // If the knock back counter is greater than 0.
+        {
+            knockBackCounter -= Time.deltaTime; // Decrease the knock back counter.
+
+            if(moveSpeed > 0) // If the move speed is greater than 0.
+            {
+                moveSpeed = -moveSpeed * 2f; // Set the move speed to the negative move speed times 2.
+            }
+
+            if(knockBackCounter <= 0) // If the knock back counter is less than or equal to 0.
+            {
+                moveSpeed = Mathf.Abs(moveSpeed * .5f); // Set the move speed to the negative move speed times 0.5.
+            }
+        }
+
         theRB.velocity = (target.position - transform.position).normalized * moveSpeed; // Move the enemy towards the target.
 
         if(hitCounter > 0) // If the hit counter is greater than 0.
@@ -34,6 +52,26 @@ public class EnemyController : MonoBehaviour
             PlayerHealthController.instance.TakeDamage(damage); // Take 10 damage.
 
             hitCounter = hitWaitTime; // Set the hit counter to the hit wait time.
+        }
+    }
+
+    public void TakeDamage(float damageToTake) // Function to take damage.
+    {
+        health -= damageToTake;
+
+        if(health <= 0) // If the health is less than or equal to 0.
+        {
+            Destroy(gameObject); // Destroy the enemy.
+        }
+    }
+
+    public void TakeDamage(float damageToTake, bool shouldKnockBack)
+    {
+        TakeDamage(damageToTake); // Take damage.
+
+        if(shouldKnockBack == true) // If the enemy should be knocked back.
+        {
+            knockBackCounter = knockBackTime; // Set the knock back counter to the knock back time.
         }
     }
 }

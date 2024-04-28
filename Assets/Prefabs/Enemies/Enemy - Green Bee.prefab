@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 6254491537581076110}
   m_Layer: 0
   m_Name: Enemy - Green Bee
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -173,6 +173,7 @@ MonoBehaviour:
   moveSpeed: 1
   damage: 5
   hitWaitTime: 1
+  health: 5
 --- !u!114 &6254491537581076110
 MonoBehaviour:
   m_ObjectHideFlags: 0

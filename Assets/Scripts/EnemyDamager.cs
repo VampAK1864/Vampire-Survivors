@@ -8,6 +8,7 @@ public class EnemyDamager : MonoBehaviour
     public float lifeTime, growSpeed = 5f; // The lifetime of the enemy and the speed at which the enemy grows.
     private Vector3 targetSize; // The target size of the enemy.
     public bool shouldKnockBack; // Should the enemy knock back the player.
+    public bool destroyParent; // Should the parent be destroyed.
     void Start()
     {
         //Destroy(gameObject, lifeTime); // Destroy the enemy after the lifetime.
@@ -29,6 +30,11 @@ public class EnemyDamager : MonoBehaviour
             if(transform.localScale.x == 0f) // If the scale is zero.
             {
                 Destroy(gameObject); // Destroy the enemy.
+
+                if(destroyParent) // If the parent should be destroyed.
+                {
+                    Destroy(transform.parent.gameObject); // Destroy the parent.
+                }
             }
         }
     }

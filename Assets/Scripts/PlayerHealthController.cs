@@ -5,42 +5,42 @@ using UnityEngine.UI;
 
 public class PlayerHealthController : MonoBehaviour
 {
-    public static PlayerHealthController instance; // Create a singleton of the PlayerHealthController.
+    public static PlayerHealthController instance; // Create a singleton of the PlayerHealthController. AK
 
     private void Awake()
     {
-        instance = this; // Set the instance to this script.
+        instance = this; // Set the instance to this script. AK
     }
 
-    public float currentHealth, maxHealth; // Current and max health of the player.
+    public float currentHealth, maxHealth; // Current and max health of the player. AK
 
-    public Slider healthSlider; // The health slider.
+    public Slider healthSlider; // The health slider. AK
 
     void Start()
     {
-        currentHealth = maxHealth; // Set the current health to the max health at the start of the game.
+        currentHealth = maxHealth; // Set the current health to the max health at the start of the game. AK
 
-        healthSlider.maxValue = maxHealth; // Set the max value of the health slider to the max health.
-        healthSlider.value = currentHealth; // Set the value of the health slider to the current health.
+        healthSlider.maxValue = maxHealth; // Set the max value of the health slider to the max health. AK
+        healthSlider.value = currentHealth; // Set the value of the health slider to the current health.AK
     }
 
     void Update()
     {
-        // if(Input.GetKeyDown(KeyCode.Space)) // If the space key is pressed.
+        // if(Input.GetKeyDown(KeyCode.Space)) // If the space key is pressed. AK
         // {
-        //     TakeDamage(10f); // Take 10 damage.
+        //     TakeDamage(10f); // Take 10 damage. AK
         // }
     }
 
-    public void TakeDamage(float damageToTake) // Function to take damage.
+    public void TakeDamage(float damageToTake) // Function to take damage. AK
     {
-        currentHealth -= damageToTake;
+        currentHealth -= damageToTake; // Decrease the current health by the damage. AK
 
-        if(currentHealth <= 0) // If the current health is less than or equal to 0.
+        if(currentHealth <= 0) // If the current health is less than or equal to 0. AK
         {
-            gameObject.SetActive(false); // Deactivate the player.
+            gameObject.SetActive(false); // Deactivate the player. AK
         }
 
-        healthSlider.value = currentHealth; // Set the value of the health slider to the current health.
+        healthSlider.value = currentHealth; // Set the value of the health slider to the current health. AK
     }
 }

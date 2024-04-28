@@ -41,11 +41,11 @@ public class EnemySpawner : MonoBehaviour
 
         int checkTarget = enemyToCheck + checkPerFrame; // Set the check target to the enemy to check plus the check per frame.
 
-        while(enemyToCheck < checkTarget)
+        while(enemyToCheck < checkTarget) // While the enemy to check is less than the check target.
         {
-            if(enemyToCheck < spawnedEnemies.Count)
+            if(enemyToCheck < spawnedEnemies.Count) // If the enemy to check is less than the number of spawned enemies.
             {
-                if(spawnedEnemies[enemyToCheck] != null)
+                if(spawnedEnemies[enemyToCheck] != null) // If the enemy to check is not null.
                 {
                     if(Vector3.Distance(transform.position, spawnedEnemies[enemyToCheck].transform.position) > despawnDistance) // If the distance between the spawner and the enemy is greater than the despawn distance.
                     {
@@ -55,19 +55,19 @@ public class EnemySpawner : MonoBehaviour
                     }
                     else
                     {
-                        enemyToCheck++;
+                        enemyToCheck++; // Increase the enemy to check.
                     }
                 }
                 else
                 {
-                    spawnedEnemies.RemoveAt(enemyToCheck);
-                    checkTarget--;
+                    spawnedEnemies.RemoveAt(enemyToCheck); // Remove the enemy from the list of spawned enemies.
+                    checkTarget--; // Decrease the check target.
                 }
             }
             else
             {
-                enemyToCheck = 0;
-                checkTarget = 0;
+                enemyToCheck = 0; // Set the enemy to check to 0.
+                checkTarget = 0; // Set the check target to 0.
             }
         }
     }
@@ -78,7 +78,7 @@ public class EnemySpawner : MonoBehaviour
 
         bool spawnVerticalEdge = Random.Range(0f, 1f) > .5f; // Randomly select if the spawn point is on the vertical edge.
 
-        if(spawnVerticalEdge)
+        if(spawnVerticalEdge) // If the spawn point is on the vertical edge.
         {
             spawnPoint.y = Random.Range(minSpawn.position.y, maxSpawn.position.y); // Set the y position to a random value between the minimum and maximum spawn positions.
 

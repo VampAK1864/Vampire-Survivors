@@ -57,7 +57,7 @@ public class EnemyController : MonoBehaviour
 
     public void TakeDamage(float damageToTake) // Function to take damage.
     {
-        health -= damageToTake;
+        health -= damageToTake; // Decrease the health by the damage.
 
         if(health <= 0) // If the health is less than or equal to 0.
         {

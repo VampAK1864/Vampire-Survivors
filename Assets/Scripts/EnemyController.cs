@@ -13,7 +13,8 @@ public class EnemyController : MonoBehaviour
 
     void Start()
     {
-        target = FindObjectOfType<PlayerController>().transform; // Find the player and set it as the target.
+        //target = FindObjectOfType<PlayerController>().transform; // Find the player and set it as the target.
+        target = PlayerHealthController.instance.transform; // Find the player and set it as the target.
     }
 
     void Update()

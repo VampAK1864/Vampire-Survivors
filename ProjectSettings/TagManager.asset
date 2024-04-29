@@ -48,6 +48,9 @@ TagManager:
   - name: Enemy
     uniqueID: 1448270491
     locked: 0
+  - name: Pickups
+    uniqueID: 4211148843
+    locked: 0
   - name: Player
     uniqueID: 3370230663
     locked: 0

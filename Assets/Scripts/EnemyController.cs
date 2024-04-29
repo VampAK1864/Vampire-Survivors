@@ -13,6 +13,7 @@ public class EnemyController : MonoBehaviour
     public float health =5f; // The health of the enemy. AK
     public float knockBackTime = .5f; // The time to knock back the enemy. AK
     private float knockBackCounter; // The counter for the knock back time. AK
+    public int expToGive = 1; // The experience to give when the enemy is destroyed. GK
 
     void Start()
     {
@@ -62,6 +63,7 @@ public class EnemyController : MonoBehaviour
         if(health <= 0) // If the health is less than or equal to 0. AK
         {
             Destroy(gameObject); // Destroy the enemy. AK
+            ExperienceLevelController.instance.SpawnExp(transform.position,expToGive); // Set the experience when the enemy is destroyed. GK 
         }
 
         DamageNumberController.instance.SpawnDamage(damageToTake, transform.position); // Spawn the damage number. AK

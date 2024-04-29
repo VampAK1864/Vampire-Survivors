@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed; // The speed at which the player moves. AK
 
     public Animator anim; // The animator component. AK
+    public float pickupRange = 1.5f; // The range of the attack. AK
 
     void Start()
     {

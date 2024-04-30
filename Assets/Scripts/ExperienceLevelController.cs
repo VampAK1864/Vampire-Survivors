@@ -53,6 +53,10 @@ public class ExperienceLevelController : MonoBehaviour
         {
             currentLevel = expLevels.Count-1; // Set the current level to the level count. GK
         }
-        PlayerController.instance.activeWeapon.LevelUp();
+        //PlayerController.instance.activeWeapon.LevelUp(); // Level up the player's weapon. GK
+        UIController.instance.levelUpPanel.SetActive(true); // Set the level up panel to active. GK
+        Time.timeScale = 0f; // Set the time scale to 0. GK
+        UIController.instance.levelUpButtons[1].UpdateButtonDisplay(PlayerController.instance.activeWeapon); // Update the button display. GK
+        
     }
 }

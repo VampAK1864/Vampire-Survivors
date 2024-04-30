@@ -12,7 +12,9 @@ public class SpinWeapon : Weapon // Inherits from the Weapon class. GK
 
     void Start()
     {
-
+        SetStats(); // Set the stats. GK
+        UIController.instance.levelUpButtons[0].UpdateButtonDisplay(this); // Update the button display. GK
+        
     }
 
     void Update()

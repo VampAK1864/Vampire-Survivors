@@ -13,6 +13,10 @@ public class UIController : MonoBehaviour
     }
     public Slider explvlSlider; // The experience level slider. GK
     public TMP_Text explvlText; // The experience level text. GK
+
+    public LevelUpSellectionButton[] levelUpButtons; // The level up buttons. GK
+
+    public GameObject levelUpPanel; // The level up panel. GK
     // Start is called before the first frame update
     void Start()
     {

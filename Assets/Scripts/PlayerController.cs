@@ -4,10 +4,16 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public static PlayerController instance; // Create a singleton instance of the PlayerController. GK
+    public void Awake()
+    {
+        instance = this; // Set the instance to this object. GK
+    }
     public float moveSpeed; // The speed at which the player moves. AK
 
     public Animator anim; // The animator component. AK
     public float pickupRange = 1.5f; // The range of the attack. AK
+    public Weapon activeWeapon; // The active weapon. GK
 
     void Start()
     {

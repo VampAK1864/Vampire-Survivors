@@ -34,5 +34,10 @@ public class UIController : MonoBehaviour
         explvlSlider.value = currentExp; // Set the value of the slider to the current experience. GK
         explvlText.text = "Level: " + currentLvl; // Set the text to the current level and experience. GK
     }
+    public void SkipLevelUp() // Function to skip the level. GK
+    {
+        levelUpPanel.SetActive(false); // Set the level up panel to false. GK
+        Time.timeScale = 1f; // Set the timescale to 1. GK
+    }
 }
 

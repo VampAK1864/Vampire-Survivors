@@ -1,5 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class SpinWeapon : Weapon // Inherits from the Weapon class. GK
@@ -21,13 +24,19 @@ public class SpinWeapon : Weapon // Inherits from the Weapon class. GK
     {
        // holder.rotation = Quaternion.Euler(0f, 0f, holder.rotation.eulerAngles.z + (rotateSpeed * Time.deltaTime)); // Rotate the weapon around the z-axis. AK
        holder.rotation = Quaternion.Euler(0f, 0f, holder.rotation.eulerAngles.z + (rotateSpeed * Time.deltaTime * stats[weaponLevel].speed)); // Rotate the weapon around the z-axis. GK
-
         spawnCounter -= Time.deltaTime; // Decrease the spawn counter. AK
         if(spawnCounter <= 0) // If the spawn counter is less than or equal to 0. AK
         {
             spawnCounter = timeBetweenSpawn; // Reset the spawn counter. AK
 
-            Instantiate(fireballToSpawn, fireballToSpawn.position, fireballToSpawn.rotation, holder).gameObject.SetActive(true); // Spawn the fireball at the fireball's position and rotation as a child of the holder. AK
+            //Instantiate(fireballToSpawn, fireballToSpawn.position, fireballToSpawn.rotation, holder).gameObject.SetActive(true); // Spawn the fireball at the fireball's position and rotation as a child of the holder. AK
+
+            for (int i = 0; i < stats[weaponLevel].amount; i++) // For each fireball. GK
+            {
+                float rot = (360f / stats[weaponLevel].amount) * i; // Calculate the rotation. GK
+                Instantiate(fireballToSpawn, fireballToSpawn.position, Quaternion.Euler(0f, 0f, rot), holder).gameObject
+                    .SetActive(true); // Instantiate the fireball at the position and rotation. GK
+            }
         }
         if(statsUpdated) // If the stats are updated. GK
         {
@@ -41,6 +50,6 @@ public class SpinWeapon : Weapon // Inherits from the Weapon class. GK
         transform.localScale= Vector3.one * stats[weaponLevel].range; // Set the scale of the weapon to the range of the weapon. GK
         timeBetweenSpawn = stats[weaponLevel].timeBetweenAttacks; // Set the time between spawn to the time between attacks of the weapon. GK
         damager.lifeTime = stats[weaponLevel].duration; // Set the life time of the damager to the duration of the weapon. GK
-        spawnCounter=0; // Reset the spawn counter. GK
+        spawnCounter=0f; // Reset the spawn counter. GK
     }
 }

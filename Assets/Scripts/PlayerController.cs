@@ -13,11 +13,16 @@ public class PlayerController : MonoBehaviour
 
     public Animator anim; // The animator component. AK
     public float pickupRange = 1.5f; // The range of the attack. AK
-    public Weapon activeWeapon; // The active weapon. GK
+    //public Weapon activeWeapon; // The active weapon. GK
+    public List<Weapon> unassignedWeapons, assignedWeapons; // The list of unassigned and assigned weapons. GK
+    public int maxWeapons = 3; // The maximum number of weapons. GK
+    [HideInInspector]
+    public List<Weapon> fullyLevelledWeapons = new List<Weapon>(); // The list of fully levelled weapons. GK
 
     void Start()
     {
-
+        AddWeapon(Random.Range(0, unassignedWeapons.Count)); // Add a random weapon. GK
+        
     }
 
     void Update()
@@ -40,5 +45,20 @@ public class PlayerController : MonoBehaviour
         {
             anim.SetBool("isMoving", false); // Set the isMoving parameter in the animator to false. AK
         }
+    }
+    public void AddWeapon(int weaponNumber) // Function to add a weapon. GK
+    {
+        if (weaponNumber < unassignedWeapons.Count) // If the weapon number is less than the unassigned weapons count. GK  
+        {
+            assignedWeapons.Add(unassignedWeapons[weaponNumber]); // Add the weapon to the assigned weapons. GK
+            unassignedWeapons[weaponNumber].gameObject.SetActive(true); // Set the weapon to active. GK
+            unassignedWeapons.RemoveAt(weaponNumber); // Remove the weapon from the unassigned weapons. GK
+        }
+    }
+    public void AddWeapon(Weapon weaponToAdd) // Function to add the weapon. GK
+    {
+        weaponToAdd.gameObject.SetActive(true); // Set the weapon to active. GK
+        assignedWeapons.Add(weaponToAdd); // Add the weapon to the assigned weapons. GK
+        unassignedWeapons.Remove(weaponToAdd); // Remove the weapon from the unassigned weapons. GK
     }
 }

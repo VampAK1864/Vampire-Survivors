@@ -9,6 +9,10 @@ public class EnemyDamager : MonoBehaviour
     private Vector3 targetSize; // The target size of the enemy. AK
     public bool shouldKnockBack; // Should the enemy knock back the player. AK
     public bool destroyParent; // Should the parent be destroyed. AK
+    public bool damageOverTime; // Should the damage be dealt over time. GK
+    public float timeBetweenDamage; // The time between damage. GK
+    private float damageCounter; // The counter for the damage. GK
+    private List<EnemyController> enemiesInRange = new List<EnemyController>(); // The list of enemies in range. GK
     void Start()
     {
         //Destroy(gameObject, lifeTime); // Destroy the enemy after the lifetime. AK
@@ -37,13 +41,54 @@ public class EnemyDamager : MonoBehaviour
                 }
             }
         }
+
+        if (damageOverTime == true) // If the damage is over time. GK
+        {
+            damageCounter -= Time.deltaTime; // Decrease the damage counter. GK
+            if(damageCounter <= 0) // If the damage counter is less than or equal to 0. GK
+            {
+                damageCounter = timeBetweenDamage; // Reset the damage counter. GK
+                for(int i = 0; i < enemiesInRange.Count; i++) // For each enemy in range. GK
+                {
+                    if (enemiesInRange[i] != null) // If the enemy is not null. GK
+                    {
+                        enemiesInRange[i].TakeDamage(damageAmount, shouldKnockBack); // Take damage. GK
+                    }
+                    else // If the enemy is null. GK
+                    {
+                        enemiesInRange.RemoveAt(i); // Remove the enemy from the list. GK
+                        i--; // Decrease the counter. GK
+                    }
+                }
+            }
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision) // When the enemy collides with something. AK
     {
-        if(collision.tag == "Enemy") // If the enemy collides with the player. AK
+        if(damageOverTime == false) // If the damage is not over time. GK
         {
-            collision.GetComponent<EnemyController>().TakeDamage(damageAmount, shouldKnockBack); // Take damage. AK
+            if(collision.tag == "Enemy") // If the enemy collides with the player. AK
+            {
+                collision.GetComponent<EnemyController>().TakeDamage(damageAmount, shouldKnockBack); // Take damage. AK
+            }
+        }
+        else // If the damage is over time. GK
+        {
+            if(collision.tag == "Enemy") // If the enemy collides with the player. GK
+            {
+                enemiesInRange.Add(collision.GetComponent<EnemyController>()); // Add the enemy to the list. GK
+            }
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision) // When the enemy exits a collision. GK
+    {
+        if(damageOverTime) // If the damage is over time. GK
+        {
+            if(collision.tag == "Enemy") // If the enemy exits a collision. GK
+            {
+                enemiesInRange.Remove(collision.GetComponent<EnemyController>()); // Remove the enemy from the list. GK
+            }
         }
     }
 }

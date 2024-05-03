@@ -5,31 +5,24 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public static PlayerController instance; // Create a singleton instance of the PlayerController. GK
-
     public void Awake()
     {
         instance = this; // Set the instance to this object. GK
     }
-
     public float moveSpeed; // The speed at which the player moves. AK
 
     public Animator anim; // The animator component. AK
-
     public float pickupRange = 1.5f; // The range of the attack. AK
-
     //public Weapon activeWeapon; // The active weapon. GK
     public List<Weapon> unassignedWeapons, assignedWeapons; // The list of unassigned and assigned weapons. GK
     public int maxWeapons = 3; // The maximum number of weapons. GK
-
     [HideInInspector]
     public List<Weapon> fullyLevelledWeapons = new List<Weapon>(); // The list of fully levelled weapons. GK
 
     void Start()
     {
-        if (assignedWeapons.Count == 0) // If there are no assigned weapons. GK
-        {
-            AddWeapon(Random.Range(0, unassignedWeapons.Count)); // Add a random weapon. GK
-        }
+        AddWeapon(Random.Range(0, unassignedWeapons.Count)); // Add a random weapon. GK
+        
     }
 
     void Update()
@@ -42,10 +35,9 @@ public class PlayerController : MonoBehaviour
 
         moveInput.Normalize(); // Normalize the vector so that the player moves at the same speed in all directions. AK
 
-        transform.position +=
-            moveInput * moveSpeed * Time.deltaTime; // Move the player in the direction of the input. AK
+        transform.position += moveInput * moveSpeed * Time.deltaTime; // Move the player in the direction of the input. AK
 
-        if (moveInput != Vector3.zero) // If the player is moving AK
+        if(moveInput != Vector3.zero) // If the player is moving AK
         {
             anim.SetBool("isMoving", true); // Set the isMoving parameter in the animator to true. AK
         }
@@ -54,18 +46,15 @@ public class PlayerController : MonoBehaviour
             anim.SetBool("isMoving", false); // Set the isMoving parameter in the animator to false. AK
         }
     }
-
     public void AddWeapon(int weaponNumber) // Function to add a weapon. GK
     {
-        if (weaponNumber <
-            unassignedWeapons.Count) // If the weapon number is less than the unassigned weapons count. GK  
+        if (weaponNumber < unassignedWeapons.Count) // If the weapon number is less than the unassigned weapons count. GK  
         {
             assignedWeapons.Add(unassignedWeapons[weaponNumber]); // Add the weapon to the assigned weapons. GK
             unassignedWeapons[weaponNumber].gameObject.SetActive(true); // Set the weapon to active. GK
             unassignedWeapons.RemoveAt(weaponNumber); // Remove the weapon from the unassigned weapons. GK
         }
     }
-
     public void AddWeapon(Weapon weaponToAdd) // Function to add the weapon. GK
     {
         weaponToAdd.gameObject.SetActive(true); // Set the weapon to active. GK

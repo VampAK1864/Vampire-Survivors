@@ -21,8 +21,11 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        AddWeapon(Random.Range(0, unassignedWeapons.Count)); // Add a random weapon. GK
-        
+        //if(assignedWeapons.Count == 0) // If the assigned weapons count is 0. GK
+        {        
+            AddWeapon(Random.Range(0, unassignedWeapons.Count)); // Add a random weapon. GK
+
+        }
     }
 
     void Update()

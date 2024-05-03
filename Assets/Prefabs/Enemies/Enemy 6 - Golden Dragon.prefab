@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2600073886998295282}
   - component: {fileID: 2600073886998295280}
   - component: {fileID: 2600073886998295281}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Enemy 6 - Golden Dragon
   m_TagString: Enemy
   m_Icon: {fileID: 0}

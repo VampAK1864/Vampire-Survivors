@@ -13,6 +13,7 @@ public class EnemyDamager : MonoBehaviour
     public float timeBetweenDamage; // The time between damage. GK
     private float damageCounter; // The counter for the damage. GK
     private List<EnemyController> enemiesInRange = new List<EnemyController>(); // The list of enemies in range. GK
+    public bool destroyOnImpact; // Should the enemy be destroyed on impact. GK
     void Start()
     {
         //Destroy(gameObject, lifeTime); // Destroy the enemy after the lifetime. AK
@@ -64,13 +65,17 @@ public class EnemyDamager : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision) // When the enemy collides with something. AK
+    private void OnTriggerEnter2D(Collider2D collision) // When the enemy collides with something. GK
     {
         if(damageOverTime == false) // If the damage is not over time. GK
         {
-            if(collision.tag == "Enemy") // If the enemy collides with the player. AK
+            if(collision.tag == "Enemy") // If the enemy collides with the player. GK
             {
-                collision.GetComponent<EnemyController>().TakeDamage(damageAmount, shouldKnockBack); // Take damage. AK
+                collision.GetComponent<EnemyController>().TakeDamage(damageAmount, shouldKnockBack); // Take damage. GK
+                if(destroyOnImpact) // If the enemy should be destroyed on impact. GK
+                {
+                    Destroy(gameObject); // Destroy the enemy. GK
+                }
             }
         }
         else // If the damage is over time. GK

@@ -23,27 +23,35 @@ public class EnemyController : MonoBehaviour
 
     void Update()
     {
-        if(knockBackCounter > 0) // If the knock back counter is greater than 0. AK
+        if(PlayerController.instance.gameObject.activeSelf == true) // If the player is not active. GK
         {
-            knockBackCounter -= Time.deltaTime; // Decrease the knock back counter. AK
-
-            if(moveSpeed > 0) // If the move speed is greater than 0. AK
+            if(knockBackCounter > 0) // If the knock back counter is greater than 0. AK
             {
-                moveSpeed = -moveSpeed * 2f; // Set the move speed to the negative move speed times 2. AK
+                knockBackCounter -= Time.deltaTime; // Decrease the knock back counter. AK
+
+                if(moveSpeed > 0) // If the move speed is greater than 0. AK
+                {
+                    moveSpeed = -moveSpeed * 2f; // Set the move speed to the negative move speed times 2. AK
+                }
+
+                if(knockBackCounter <= 0) // If the knock back counter is less than or equal to 0. AK
+                {
+                    moveSpeed = Mathf.Abs(moveSpeed * .5f); // Set the move speed to the negative move speed times 0.5. AK
+                }
             }
 
-            if(knockBackCounter <= 0) // If the knock back counter is less than or equal to 0. AK
+            theRB.velocity = (target.position - transform.position).normalized * moveSpeed; // Move the enemy towards the target. AK
+
+            if(hitCounter > 0) // If the hit counter is greater than 0. AK
             {
-                moveSpeed = Mathf.Abs(moveSpeed * .5f); // Set the move speed to the negative move speed times 0.5. AK
+                hitCounter -= Time.deltaTime; // Decrease the hit counter. AK
             }
         }
-
-        theRB.velocity = (target.position - transform.position).normalized * moveSpeed; // Move the enemy towards the target. AK
-
-        if(hitCounter > 0) // If the hit counter is greater than 0. AK
+        else
         {
-            hitCounter -= Time.deltaTime; // Decrease the hit counter. AK
+            theRB.velocity = Vector2.zero; // Set the velocity to 0. GK
         }
+        
     }
 
     private void OnCollisionEnter2D(Collision2D collision) // When the enemy collides with something. AK

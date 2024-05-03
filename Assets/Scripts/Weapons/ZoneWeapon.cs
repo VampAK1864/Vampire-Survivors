@@ -10,7 +10,7 @@ public class ZoneWeapon : Weapon
     // Start is called before the first frame update
     void Start()
     {
-        
+        SetStats();
     }
 
     // Update is called once per frame
@@ -22,11 +22,11 @@ public class ZoneWeapon : Weapon
             SetStats(); // Set the stats. GK
         }
         spawnCounter -= Time.deltaTime; // Decrease the spawn counter. GK
-        // if (spawnCounter <= 0) // If the spawn counter is less than or equal to 0. GK
-        // {
-        //     spawnCounter = spawnTime; // Reset the spawn counter. GK
-        //     Instantiate(damager, damager.transform.position, Quaternion.identity, transform).gameObject.SetActive(true); // Instantiate the damager at the position. GK
-        // }
+        if (spawnCounter <= 0) // If the spawn counter is less than or equal to 0. GK
+        {
+            spawnCounter = spawnTime; // Reset the spawn counter. GK
+            Instantiate(damager, damager.transform.position, Quaternion.identity, transform).gameObject.SetActive(true); // Instantiate the damager at the position. GK
+        }
     }
 
     void SetStats() // Function to set the stats of the weapon. GK
@@ -36,5 +36,6 @@ public class ZoneWeapon : Weapon
         damager.timeBetweenDamage = stats[weaponLevel].speed; // Set the time between damage to the speed of the weapon. GK
         damager.transform.localScale = Vector3.one * stats[weaponLevel].range; // Set the scale of the damager to the range of the weapon. GK\
         spawnTime = stats[weaponLevel].timeBetweenAttacks; // Set the spawn time to the time between attacks of the weapon. GK
+        spawnCounter = 0f; // Reset the spawn counter. GK
     }
 }

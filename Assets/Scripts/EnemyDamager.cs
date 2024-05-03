@@ -50,7 +50,7 @@ public class EnemyDamager : MonoBehaviour
                 damageCounter = timeBetweenDamage; // Reset the damage counter. GK
                 for(int i = 0; i < enemiesInRange.Count; i++) // For each enemy in range. GK
                 {
-                    if (enemiesInRange[i] != null) // If the enemy is not null. GK
+                    if (enemiesInRange[i]) // If the enemy is not null. GK
                     {
                         enemiesInRange[i].TakeDamage(damageAmount, shouldKnockBack); // Take damage. GK
                     }

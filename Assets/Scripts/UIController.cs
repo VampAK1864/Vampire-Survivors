@@ -17,6 +17,7 @@ public class UIController : MonoBehaviour
     public LevelUpSellectionButton[] levelUpButtons; // The level up buttons. GK
 
     public GameObject levelUpPanel; // The level up panel. GK
+    public TMP_Text coinText; // The coin text. D
     // Start is called before the first frame update
     void Start()
     {
@@ -38,6 +39,11 @@ public class UIController : MonoBehaviour
     {
         levelUpPanel.SetActive(false); // Set the level up panel to false. GK
         Time.timeScale = 1f; // Set the timescale to 1. GK
+    }
+    
+    public void UpdateCoins() // Function to update the coins. D
+    {
+        coinText.text = "Coins: " + CoinController.instance.currentCoins; // Set the coin text to the current coins. D
     }
 }
 

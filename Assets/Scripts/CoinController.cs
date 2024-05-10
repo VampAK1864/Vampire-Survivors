@@ -26,6 +26,11 @@ public class CoinController : MonoBehaviour
         newCoin.coinAmount = value;
         newCoin.gameObject.SetActive(true);
     }
+    public void SpendCoins(int coinsToSpend) // Spend coins. GK
+    {
+        currentCoins -= coinsToSpend; // Subtract the coins. GK
+        UIController.instance.UpdateCoins(); // Update the coins. GK
+    }
     // Start is called before the first frame update
     void Start()
     {

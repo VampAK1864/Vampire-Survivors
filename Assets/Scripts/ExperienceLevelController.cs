@@ -101,5 +101,6 @@ public class ExperienceLevelController : MonoBehaviour
                UIController.instance.levelUpButtons[i].gameObject.SetActive(false); // Set the button to inactive. GK
            }
        }
+       PlayerStatController.instance.UpdateDisplay(); // Update the display. GK
     }
 }

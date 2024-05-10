@@ -26,6 +26,9 @@ public class PlayerController : MonoBehaviour
             AddWeapon(Random.Range(0, unassignedWeapons.Count)); // Add a random weapon. GK
 
         }
+        moveSpeed = PlayerStatController.instance.moveSpeed[0].value; // Set the move speed to the player stat controller move speed. GK
+        pickupRange = PlayerStatController.instance.pickupRange[0].value; // Set the pickup range to the player stat controller pickup range. GK
+        maxWeapons = Mathf.RoundToInt(PlayerStatController.instance.maxWeapons[0].value); // Set the max weapons to the player stat controller max weapons. GK
     }
 
     void Update()

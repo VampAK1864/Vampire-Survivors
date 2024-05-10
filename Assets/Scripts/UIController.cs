@@ -18,6 +18,11 @@ public class UIController : MonoBehaviour
 
     public GameObject levelUpPanel; // The level up panel. GK
     public TMP_Text coinText; // The coin text. D
+
+    public PlayerStatUpgradeDisplay moveSpeedUpgradeDisplay,
+        healthUpgradeDisplay,
+        pickupRangeUpgradeDisplay,
+        maxWeaponsUpgradeDisplay; // The player stat upgrade display. GK
     // Start is called before the first frame update
     void Start()
     {
@@ -44,6 +49,27 @@ public class UIController : MonoBehaviour
     public void UpdateCoins() // Function to update the coins. D
     {
         coinText.text = "Coins: " + CoinController.instance.currentCoins; // Set the coin text to the current coins. D
+    }
+    
+    public void PurchaseMoveSpeed() // Function to purchase the move speed. GK
+    {
+       PlayerStatController.instance.PurchaseMoveSpeed();
+       SkipLevelUp();
+    }
+    public void PurchaseHealth() // Function to purchase the health. GK
+    {
+        PlayerStatController.instance.PurchaseHealth();
+        SkipLevelUp();
+    }
+    public void PurchasePickupRange() // Function to purchase the pickup range. GK
+    {
+        PlayerStatController.instance.PurchasePickupRange();
+        SkipLevelUp();
+    }
+    public void PurchaseMaxWeapons() // Function to purchase the max weapons. GK
+    {
+        PlayerStatController.instance.PurchaseMaxWeapons();
+        SkipLevelUp();
     }
 }
 

@@ -18,6 +18,7 @@ public class PlayerHealthController : MonoBehaviour
 
     void Start()
     {
+        maxHealth = PlayerStatController.instance.health[0].value; // Set the max health to the health value. GK
         currentHealth = maxHealth; // Set the current health to the max health at the start of the game. AK
 
         healthSlider.maxValue = maxHealth; // Set the max value of the health slider to the max health. AK

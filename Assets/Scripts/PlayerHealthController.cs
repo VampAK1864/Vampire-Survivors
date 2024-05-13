@@ -15,6 +15,7 @@ public class PlayerHealthController : MonoBehaviour
     public float currentHealth, maxHealth; // Current and max health of the player. AK
 
     public Slider healthSlider; // The health slider. AK
+    public GameObject deathEffect; // The death effect. GK
 
     void Start()
     {
@@ -40,6 +41,8 @@ public class PlayerHealthController : MonoBehaviour
         if(currentHealth <= 0) // If the current health is less than or equal to 0. AK
         {
             gameObject.SetActive(false); // Deactivate the player. AK
+            LevelManager.instance.EndLevel(); // End the level. GK
+            Instantiate(deathEffect, transform.position, transform.rotation); // Instantiate the death effect. GK
         }
 
         healthSlider.value = currentHealth; // Set the value of the health slider to the current health. AK

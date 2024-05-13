@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UIController : MonoBehaviour
 {
@@ -18,11 +19,14 @@ public class UIController : MonoBehaviour
 
     public GameObject levelUpPanel; // The level up panel. GK
     public TMP_Text coinText; // The coin text. D
+    public GameObject levelEndScreen; // The level end script. GK
+    public TMP_Text endTimeText; // The end time text. GK
 
     public PlayerStatUpgradeDisplay moveSpeedUpgradeDisplay,
         healthUpgradeDisplay,
         pickupRangeUpgradeDisplay,
         maxWeaponsUpgradeDisplay; // The player stat upgrade display. GK
+    public TMP_Text timeText; // The time text. GK
     // Start is called before the first frame update
     void Start()
     {
@@ -70,6 +74,21 @@ public class UIController : MonoBehaviour
     {
         PlayerStatController.instance.PurchaseMaxWeapons();
         SkipLevelUp();
+    }
+    public void UpdateTimer(float time) // Function to update the timer. GK
+    {
+        float minutes = Mathf.FloorToInt(time / 60); // Set the minutes to the time divided by 60. GK
+        float seconds = Mathf.FloorToInt(time%60); // Set the seconds to the time modulo 60. GK
+        timeText.text = "Time: " + minutes + ":" + seconds.ToString("00"); // Set the time text to the minutes and seconds. GK
+    }
+    public void GoToMainMenu() // Function to go to the main menu. GK
+    {
+        
+    }
+
+    public void Restart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
 

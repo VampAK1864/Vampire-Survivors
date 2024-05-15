@@ -73,13 +73,9 @@ The project follows this structure to ensure ease of navigation and development:
 
 ![Feature Addition Flowchart](Assets/Image/EMM.png)
 
-## Contributing
-
-Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
-
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE) file for details.
 
 ## Contact
 

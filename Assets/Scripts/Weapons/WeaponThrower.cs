@@ -30,6 +30,8 @@ public class WeaponThrower : Weapon
                 Instantiate(damager, damager.transform.position, damager.transform.rotation).gameObject.SetActive(true); // Instantiate the damager at the position and rotation. GK
 
             }
+
+            SFXManager.instance.PlaySFXPitched(4); // Play the sound effect. GK
         }
     }
     void SetStats() // Function to set the stats of the weapon. GK

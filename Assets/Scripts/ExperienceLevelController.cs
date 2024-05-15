@@ -41,6 +41,7 @@ public class ExperienceLevelController : MonoBehaviour
             LevelUp(); // Level up the player. GK
         }
         UIController.instance.UpdateExperience(currentExperience, expLevels[currentLevel], currentLevel); // Update the experience. GK
+        SFXManager.instance.PlaySFXPitched(2); // Play the sound effect. GK
     }
 
     public void SpawnExp(Vector3 position, int expValue) // Function to spawn experience into the world. GK

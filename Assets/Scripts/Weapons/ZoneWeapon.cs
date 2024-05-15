@@ -26,6 +26,8 @@ public class ZoneWeapon : Weapon
         {
             spawnCounter = spawnTime; // Reset the spawn counter. GK
             Instantiate(damager, damager.transform.position, Quaternion.identity, transform).gameObject.SetActive(true); // Instantiate the damager at the position. GK
+            SFXManager.instance.PlaySFXPitched(10); // Play the sound effect. GK
+
         }
     }
 

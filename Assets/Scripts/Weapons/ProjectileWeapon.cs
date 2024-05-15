@@ -40,6 +40,7 @@ public class ProjectileWeapon : Weapon
                    projectile.transform.rotation = Quaternion.AngleAxis(angle,Vector3.forward); // Set the rotation of the projectile. GK
                    Instantiate(projectile, projectile.transform.position, projectile.transform.rotation).gameObject.SetActive(true); // Instantiate the projectile at the position and rotation. GK
                 }
+                SFXManager.instance.PlaySFXPitched(6); // Play the sound effect. GK
             }
          }
     }

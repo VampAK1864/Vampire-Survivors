@@ -36,6 +36,7 @@ public class SpinWeapon : Weapon // Inherits from the Weapon class. GK
                 float rot = (360f / stats[weaponLevel].amount) * i; // Calculate the rotation. GK
                 Instantiate(fireballToSpawn, fireballToSpawn.position, Quaternion.Euler(0f, 0f, rot), holder).gameObject
                     .SetActive(true); // Instantiate the fireball at the position and rotation. GK
+                SFXManager.instance.PlaySFX(8); // Play the sound effect. GK
             }
         }
         if(statsUpdated) // If the stats are updated. GK

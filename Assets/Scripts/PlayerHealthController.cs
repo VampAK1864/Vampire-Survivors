@@ -43,6 +43,8 @@ public class PlayerHealthController : MonoBehaviour
             gameObject.SetActive(false); // Deactivate the player. AK
             LevelManager.instance.EndLevel(); // End the level. GK
             Instantiate(deathEffect, transform.position, transform.rotation); // Instantiate the death effect. GK
+            
+            SFXManager.instance.PlaySFX(3); // Play the sound effect. GK
         }
 
         healthSlider.value = currentHealth; // Set the value of the health slider to the current health. AK

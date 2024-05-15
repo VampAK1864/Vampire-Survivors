@@ -44,6 +44,8 @@ public class CloseAttackWeapon : Weapon
                 float rot = (360f / stats[weaponLevel].amount) * i; // Calculate the rotation. GK
                 Instantiate(damager, damager.transform.position, Quaternion.Euler(0f,0f,damager.transform.rotation.eulerAngles.z+rot), transform).gameObject.SetActive(true); // Instantiate the damager at the position and rotation. GK
             }
+            SFXManager.instance.PlaySFXPitched(9); // Play the sound effect. GK
+
         }
     }
     void SetStats() // Function to set the stats of the weapon. GK

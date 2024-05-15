@@ -19,6 +19,7 @@ public class CoinController : MonoBehaviour
     {
         currentCoins += coinsToAdd; // Add the coins. D
         UIController.instance.UpdateCoins(); // Update the coins. D
+        SFXManager.instance.PlaySFXPitched(2); // Play the sound effect. GK
     }
     public void DropCoin(Vector3 position, int value)
     {

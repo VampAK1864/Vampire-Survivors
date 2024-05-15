@@ -1,7 +1,7 @@
 
 # Vampire Survivors
 
-![Vampire Survivors Logo](Assets/images/MM.png)
+![Vampire Survivors Logo](Assets/Image/MM.png)
 
 "Vampire Survivors" is a 2D survival arcade game built with Unity, where players must endure waves of supernatural enemies. In this action-packed game, players choose a character with unique abilities to survive against relentless hordes of vampires and other monstrous creatures.
 
@@ -54,7 +54,7 @@ A step-by-step series of examples that tell you how to get a development environ
 
 Survive as long as possible by avoiding and defeating waves of enemies. Collect power-ups to enhance your character's abilities. Each game session lasts until your character's health depletes.
 
-![Gameplay Screenshot](assets/images/Game.png)
+![Gameplay Screenshot](Assets/Image/Game.png)
 
 ## Development
 
@@ -71,7 +71,7 @@ The project follows this structure to ensure ease of navigation and development:
 - **ProjectSettings/**: Unity-specific settings files.
 - **Packages/**: Project dependencies.
 
-![Feature Addition Flowchart](assets/images/EMM.png)
+![Feature Addition Flowchart](Assets/Image/EMM.png)
 
 ## Contributing
 

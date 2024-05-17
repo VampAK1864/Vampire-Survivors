@@ -15,7 +15,6 @@
   - [Gameplay Overview](#gameplay-overview)
 - [Development](#development)
   - [Project Structure](#project-structure)
-- [Contributing](#contributing)
 - [License](#license)
 - [Contact](#contact)
 
@@ -48,7 +47,7 @@ A step-by-step series of examples that tell you how to get a development environ
 ### Controls
 
 - **Arrow Keys:** Move the character
-- **Spacebar:** Activate power
+- **Mouse:** Choose your upgrade at each level up.
 
 ### Gameplay Overview
 
@@ -64,12 +63,9 @@ The project follows this structure to ensure ease of navigation and development:
 
 - **Assets/**
   - **Animations/**: Contains all in-game animations.
-  - **Materials/**: Materials to define various surface properties.
+  - **Prefabs/**: Main enemy objects made.
   - **Scenes/**: Unity scenes including the main game and menus.
   - **Scripts/**: Game logic scripts.
-  - **Sprites/**: All 2D sprites used in the game.
-- **ProjectSettings/**: Unity-specific settings files.
-- **Packages/**: Project dependencies.
 
 ![Feature Addition Flowchart](Assets/Image/EMM.png)
 
